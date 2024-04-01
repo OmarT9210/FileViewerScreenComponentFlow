@@ -1,0 +1,22 @@
+<!-- Root template element defining the component's structure -->
+<template>
+  <!-- Lightning card container to hold the component content -->
+  <lightning-card title="File Preview and Download">
+    <!-- Unordered list with medium margin around it, using SLDS (Salesforce Lightning Design System) styling -->
+    <ul class="slds-m-around_medium">
+      <!-- Iterative template to loop through each file in the filesList array -->
+      <template for:each={filesList} for:item="file">
+        <!-- List item for each file with a bottom small margin, key is used for unique identification in the list -->
+        <li key={file.contentVersionId} class="slds-m-bottom_small">
+          <!-- Paragraph to display the file name, using strong tag for emphasis -->
+          <p><strong>File Name:</strong> {file.label}</p>
+          <!-- Lightning button component to preview the file, styled with SLDS and triggers previewHandler method on click -->
+          <lightning-button label="Preview" variant="brand" data-content-version-id={file.contentVersionId}
+            onclick={previewHandler} class="slds-m-left_x-small">
+            Preview
+          </lightning-button>
+        </li>
+      </template>
+    </ul>
+  </lightning-card>
+</template>
